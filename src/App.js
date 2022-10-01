@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
-import Moon from "./components/Moon";
+import LandingPage from "./pages/LandingPage";
+import LineChart from "./pages/LineChart";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-
   return (
-    <div className="App">
-      <div className="content">
-
-      </div>
-      <Moon />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/linechart" element={<LineChart />} />
+      </Routes>
+    </Router>
   );
 }
-
 export default App;
