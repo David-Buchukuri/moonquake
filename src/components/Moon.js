@@ -8,6 +8,7 @@ import "../App.css";
 function Moon() {
   const [markersData, setMarkersData] = useState([]);
   const [ringData, setRingsData] = useState([]);
+
   const fetch = async () => {
     const res = await axios.get(
       "https://test-deployment-production.up.railway.app/api/statistics"
