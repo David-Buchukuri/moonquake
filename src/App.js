@@ -27,6 +27,7 @@ function App() {
         lat: element.lat,
         lng: element.long,
         label: `Magnitude: ${element.magnitude}`,
+        blank: ``,
         magnitude: Number(element.magnitude),
         date: element.timestamp,
         comment: element.comment,
@@ -58,25 +59,28 @@ function App() {
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         showGraticules={true}
         labelsData={markersData}
-        labelText="label"
+        labelText="blank"
         labelSize={1.7}
         labelColor={() => "#D9730D"}
-        // labelDotRadius={d.magnitude}
         labelDotRadius={0.7}
         labelDotOrientation={(d) =>
           labelsTopOrientation.has(d.label) ? "top" : "bottom"
         }
+        pointsMerge={true}
+        labelAltitude={0.02}
+        labelLabel={(d) => `
+        <div className={ {z-index: 50;} }><b>${d.label}</b></div>
+        <div className={ {z-index: 50;} }>lat: ${d.lat}° --- lng: ${
+          d.lng
+        }°</div>
+        <div className={ {z-index: 50;} }>${d.comment ?? " "}</div>
+        <div className={ {z-index: 50;} }>Happened<i> ${d.date}</i></div>
+      `}
         ringsData={ringData}
         ringColor={() => "#ff0000"}
         ringMaxRadius="maxR"
         ringPropagationSpeed={(d) => d.propagationSpeed}
         ringRepeatPeriod={(d) => d.repeatPeriod}
-        labelLabel={(d) => `
-          <div><b>${d.label}</b></div>
-          <div>lat: ${d.lat}° --- lng: ${d.lng}°</div>
-          <div>${d.comment ?? " "}</div>
-          <div>Happened<i> ${d.date}</i></div>
-        `}
       />
       ;
     </div>
