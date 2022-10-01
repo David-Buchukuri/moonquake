@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 const Diagram = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   const fetch = async () => {
     const response = await axios.get(
@@ -31,33 +31,37 @@ const Diagram = () => {
   }, []);
   // console.log(data)
   return (
+   
     <div className="App">
       <div className="chart__wrapper">
-        <div style={{ width: "100%", height: 600 }}>
-          <ResponsiveContainer>
-            <AreaChart
-              width={500}
-              height={400}
-              data={data}
-              margin={{
-                top: 50,
-                right: 50,
-                bottom: 50,
-              }}
-            >
-              <CartesianGrid />
-              <XAxis dataKey="year" />
-              <YAxis />
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="magnitude"
-                stroke="#8884d8"
-                fill="#8884d8"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
+        {data && (
+           <div style={{ width: "100%", height: 600 }}>
+           <ResponsiveContainer>
+             <AreaChart
+               width={500}
+               height={400}
+               data={data}
+               margin={{
+                 top: 50,
+                 right: 50,
+                 bottom: 50,
+               }}
+             >
+               <CartesianGrid />
+               <XAxis dataKey="year" />
+               <YAxis />
+               <Tooltip />
+               <Area
+                 type="monotone"
+                 dataKey="magnitude"
+                 stroke="#8884d8"
+                 fill="#8884d8"
+               />
+             </AreaChart>
+           </ResponsiveContainer>
+         </div>
+        )}
+       
       </div>
     </div>
   );
