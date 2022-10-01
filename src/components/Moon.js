@@ -5,7 +5,7 @@ import bumpMap from "../images/lunar-bumpmap.jpg";
 import axios from "axios";
 import "../App.css";
 
-function Moon() {
+function Moon({widthMultiplier, heightMultiplier}) {
   const [markersData, setMarkersData] = useState([]);
   const [ringData, setRingsData] = useState([]);
   const fetch = async () => {
@@ -44,8 +44,8 @@ function Moon() {
   }, []);
   return (
     <Globe
-      width={window.innerWidth * 0.9}
-      height={window.innerHeight * 0.7}
+      width={window.innerWidth * widthMultiplier}
+      height={window.innerHeight * heightMultiplier}
       globeImageUrl={surface}
       bumpImageUrl={bumpMap}
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"

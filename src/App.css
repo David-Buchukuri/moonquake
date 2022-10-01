@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 50px;
   margin: auto;
-  width: 90vw;
+  /* width: 90vw; */
 }
 
 .dropdown{
@@ -90,4 +90,23 @@ a:hover{
   border-radius: 10px;
   border: 1px #eeeeee solid;
   background-color: #eceff1;
+}
+
+.resize_button_wrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.resize_button{
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #c5c2c2;
+  border: none;
+}
+
+.resize_button:hover{
+  cursor: pointer;
 }
