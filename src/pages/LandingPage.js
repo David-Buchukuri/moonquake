@@ -1,19 +1,32 @@
 import Moon from "./../components/Moon";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function LandingPage() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [parent] = useAutoAnimate(/* optional config */);
+
   return (
     <div className="App">
       <h1>here goes title</h1>
-      <div className="dropdown">
+      <div ref={parent} className="dropdown">
         <div className="select">
-          <p>dropdown</p>
-          <i class="arrow down"></i>
+          <p>charts</p>
+          <i
+            className="arrow down"
+            onClick={() => setShowDropdown(!showDropdown)}
+          ></i>
         </div>
-        <div className="options-wrapper">
-          <Link to="linechart">line chart</Link>
-          <Link to="linechart">bar chart</Link>
-        </div>
+        {showDropdown ? (
+          <div className="options-wrapper">
+            <Link to="linechart">line chart</Link>
+            <Link to="linechart">bar chart</Link>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <Moon />
     </div>
