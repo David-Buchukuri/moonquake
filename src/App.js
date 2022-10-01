@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Globe from "react-globe.gl";
-import surface from "./images/lunar-surface.jpg";
+import surface from "./images/8k-lunar-surface.jpg";
 import bumpMap from "./images/lunar-bumpmap.jpg";
 import axios from "axios";
 
