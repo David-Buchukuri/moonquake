@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Globe from "react-globe.gl";
 import surface from "./images/lunar-surface.jpg";
 import bumpMap from "./images/lunar-bumpmap.jpg";
 import axios from "axios";
 
-//
 function App() {
-  const [data, setData] = useState([])
+  const [markersData, setMarkersData] = useState([]);
+  const [ringData, setRingsData] = useState([]);
   const labelsTopOrientation = new Set([
     "Apollo 12",
     "Luna 2",
@@ -15,28 +15,41 @@ function App() {
     "Luna 21",
     "Luna 24",
     "LCROSS Probe",
-  ]); // avoid label collisions
+  ]);
 
-  // const moonQuakes = axios.get("https://test-deployment-production.up.railway.app/api/statistics");
-  const fetch = async() =>{
-    const res = await axios.get("https://test-deployment-production.up.railway.app/api/statistics");
-    const mappedData = res?.data?.map((element) => {
-      return{
+  const fetch = async () => {
+    const res = await axios.get(
+      "https://test-deployment-production.up.railway.app/api/statistics"
+    );
+    const pointsData = res?.data?.map((element) => {
+      return {
         id: element.id,
         lat: element.lat,
         lng: element.long,
         label: `Magnitude: ${element.magnitude}`,
         magnitude: Number(element.magnitude),
         date: element.timestamp,
-        comment: element.comment
-      }
-    })
-    setData(mappedData);    
-  }   
+        comment: element.comment,
+      };
+    });
+    setMarkersData(pointsData);
 
-  useEffect(() => { 
+    const ringsData = pointsData.map((el) => {
+      return {
+        lat: el.lat,
+        lng: el.lng,
+        maxR: el.magnitude * 2,
+        propagationSpeed: el.magnitude,
+        repeatPeriod: 800,
+      };
+    });
+
+    setRingsData(ringsData);
+  };
+
+  useEffect(() => {
     fetch();
-  },[])
+  }, []);
   return (
     <div className="App">
       <Globe
@@ -44,22 +57,26 @@ function App() {
         bumpImageUrl={bumpMap}
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         showGraticules={true}
-        labelsData={data}
+        labelsData={markersData}
         labelText="label"
         labelSize={1.7}
-        labelColor={() => '#20C20E'}
+        labelColor={() => "#D9730D"}
         // labelDotRadius={d.magnitude}
-        labelDotRadius = {(d) => d.magnitude}
+        labelDotRadius={0.7}
         labelDotOrientation={(d) =>
           labelsTopOrientation.has(d.label) ? "top" : "bottom"
         }
+        ringsData={ringData}
+        ringColor={() => "#ff0000"}
+        ringMaxRadius="maxR"
+        ringPropagationSpeed={(d) => d.propagationSpeed}
+        ringRepeatPeriod={(d) => d.repeatPeriod}
         labelLabel={(d) => `
-    <div><b>${d.label}</b></div>
-    <div>lat: ${d.lat}° --- lng: ${d.lng}°</div>
-    <div>${d.comment ?? " "}</div>
-    <div>Happened<i> ${d.date}</i></div>
-  `}
-        onLabelClick={(d) => window.open(d.url, "_blank")}
+          <div><b>${d.label}</b></div>
+          <div>lat: ${d.lat}° --- lng: ${d.lng}°</div>
+          <div>${d.comment ?? " "}</div>
+          <div>Happened<i> ${d.date}</i></div>
+        `}
       />
       ;
     </div>
