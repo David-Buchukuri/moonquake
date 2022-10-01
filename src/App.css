@@ -26,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #c5c2c2;
+  flex-grow: 0;
 }
 
 .options-wrapper{
@@ -90,4 +91,9 @@ a:hover{
   border-radius: 10px;
   border: 1px #eeeeee solid;
   background-color: #eceff1;
+}
+.filter__wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 }
