@@ -7,6 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -31,37 +32,36 @@ const Diagram = () => {
   }, []);
   // console.log(data)
   return (
-   
     <div className="App">
       <div className="chart__wrapper">
         {data && (
-           <div style={{ width: "100%", height: 600 }}>
-           <ResponsiveContainer>
-             <AreaChart
-               width={500}
-               height={400}
-               data={data}
-               margin={{
-                 top: 50,
-                 right: 50,
-                 bottom: 50,
-               }}
-             >
-               <CartesianGrid />
-               <XAxis dataKey="year" />
-               <YAxis />
-               <Tooltip />
-               <Area
-                 type="monotone"
-                 dataKey="magnitude"
-                 stroke="#8884d8"
-                 fill="#8884d8"
-               />
-             </AreaChart>
-           </ResponsiveContainer>
-         </div>
+          <div style={{ width: "100%", height: 600 }}>
+            <ResponsiveContainer>
+              <AreaChart
+                width={500}
+                height={400}
+                data={data}
+                margin={{
+                  top: 50,
+                  right: 50,
+                  bottom: 50,
+                }}
+              >
+                <CartesianGrid />
+                <XAxis dataKey="year" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Area
+                  type="monotone"
+                  dataKey="magnitude"
+                  stroke="#8884d8"
+                  fill="#8884d8"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         )}
-       
       </div>
     </div>
   );
