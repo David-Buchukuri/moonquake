@@ -41,7 +41,7 @@ function App() {
       <Globe
         globeImageUrl={surface}
         bumpImageUrl={bumpMap}
-        // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         showGraticules={true}
         labelsData={data}
         labelText="label"
