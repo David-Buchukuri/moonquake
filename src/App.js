@@ -26,6 +26,7 @@ function App() {
         lat: element.lat,
         lng: element.long,
         label: `Magnitude: ${element.magnitude}`,
+        magnitude: Number(element.magnitude),
         date: element.timestamp,
         comment: element.comment
       }
@@ -46,8 +47,9 @@ function App() {
         labelsData={data}
         labelText="label"
         labelSize={1.7}
-        labelColor ={() => "red"}
-        labelDotRadius={0.4}
+        labelColor={() => '#20C20E'}
+        // labelDotRadius={d.magnitude}
+        labelDotRadius = {(d) => d.magnitude}
         labelDotOrientation={(d) =>
           labelsTopOrientation.has(d.label) ? "top" : "bottom"
         }
