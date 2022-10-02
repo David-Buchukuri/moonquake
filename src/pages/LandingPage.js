@@ -7,12 +7,14 @@ import YearDropdown from "../components/YearDropdown";
 function LandingPage() {
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(null);
-  
+
   const [resize, setResize] = useState(false);
 
   // fetch years to make years dropdown for filtering
   const fetchYears = async () => {
-    const res = await axios.get("http://localhost:8000/api/statistics/by-year");
+    const res = await axios.get(
+      "https://test-deployment-production.up.railway.app/api/by-year"
+    );
     setYears(res.data.map((el) => el.year));
   };
 
@@ -31,8 +33,6 @@ function LandingPage() {
       document.removeEventListener("keydown", keyDownHandler);
     };
   }, []);
-
- 
 
   return (
     <div className="App" style={{ width: `${resize ? "100vw" : "90vw"}` }}>
