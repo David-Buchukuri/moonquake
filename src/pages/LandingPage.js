@@ -40,10 +40,9 @@ function LandingPage() {
         <></>
       ) : (
         <div>
-          <h1>3D MoonQuake Map</h1>
+          <h1 className="landing__heading">3D MoonQuake Map</h1>
           <div className="filter__wrapper">
             <ChartDropdown />
-
             <YearDropdown
               years={years}
               setSelectedYear={setSelectedYear}
