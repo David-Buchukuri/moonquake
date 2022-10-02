@@ -1,50 +1,14 @@
-import React, { useState, useEffect } from "react";
 import Globe from "react-globe.gl";
 import surface from "../images/8k-lunar-surface.jpg";
 import bumpMap from "../images/lunar-bumpmap.jpg";
-import axios from "axios";
 import "../App.css";
 
-function Moon({widthMultiplier, heightMultiplier}) {
-  const [markersData, setMarkersData] = useState([]);
-  const [ringData, setRingsData] = useState([]);
+function Moon({ widthMultiplier, heightMultiplier, markersData, ringsData }) {
+  console.log("moon ", ringsData);
 
-  const fetch = async () => {
-    const res = await axios.get(
-      "https://test-deployment-production.up.railway.app/api/statistics"
-    );
-    const pointsData = res?.data?.map((element) => {
-      return {
-        id: element.id,
-        lat: element.lat,
-        lng: element.long,
-        label: `Magnitude: ${element.magnitude}`,
-        blank: ``,
-        magnitude: Number(element.magnitude),
-        date: element.timestamp,
-        comment: element.comment,
-      };
-    });
-    setMarkersData(pointsData);
-
-    const ringsData = pointsData.map((el) => {
-      return {
-        lat: el.lat,
-        lng: el.lng,
-        maxR: el.magnitude * 2,
-        propagationSpeed: el.magnitude,
-        repeatPeriod: 800,
-      };
-    });
-
-    setRingsData(ringsData);
-  };
-
-  useEffect(() => {
-    fetch();
-  }, []);
   return (
     <Globe
+      //   key={new Date()}
       width={window.innerWidth * widthMultiplier}
       height={window.innerHeight * heightMultiplier}
       globeImageUrl={surface}
@@ -68,7 +32,7 @@ function Moon({widthMultiplier, heightMultiplier}) {
                 <div>Happened<i> ${d.date}</i></div>
             <div>
             `}
-      ringsData={ringData}
+      ringsData={ringsData}
       ringColor={() => "#ff0000"}
       ringMaxRadius="maxR"
       ringPropagationSpeed={(d) => d.propagationSpeed}

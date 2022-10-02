@@ -1,3 +1,9 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
 .App {
   display: flex;
   flex-direction: column;
@@ -20,6 +26,7 @@
 
 }
 
+
 .select{
   width: 100%;
   display: flex;
@@ -27,6 +34,8 @@
   align-items: center;
   background-color: #c5c2c2;
   flex-grow: 0;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .options-wrapper{
@@ -48,6 +57,10 @@ a{
   transition-duration: 0.4s;
   border-radius: 4px;
   /* font-size: 20px; */
+}
+
+.years{
+ padding: 5px;
 }
 
 a:hover{
@@ -96,6 +109,8 @@ a:hover{
   display: flex;
   gap: 10px;
   align-items: flex-start;
+  
+  margin-top: 50px;
 }
 
 .resize_button_wrapper{
@@ -115,4 +130,31 @@ a:hover{
 
 .resize_button:hover{
   cursor: pointer;
+}
+
+span{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.year{
+  text-decoration: none;
+  color: black;
+  transition: all;
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+
+
+.year:hover{
+  background-color: black;
+  color: white;
+  padding-left: 10px;
+  font-weight: 900;
 }
