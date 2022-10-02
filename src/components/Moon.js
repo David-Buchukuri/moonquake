@@ -85,7 +85,7 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
                 <div>lat: ${d.lat}°</div>
                 <div>lng: ${d.lng}°</div>
                 <div class='comment__text'>${d.comment ?? " "}</div>
-                <div>Happened<i> ${d.date}</i></div>
+                <div>Happened:<i> ${d.date}</i></div>
             <div>
             `}
       ringsData={ringsData}
