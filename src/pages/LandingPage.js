@@ -7,10 +7,7 @@ import YearDropdown from "../components/YearDropdown";
 function LandingPage() {
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(null);
-  //   const [markersData, setMarkersData] = useState([]);
-  //   const [ringsData, setRingsData] = useState([]);
-  //   const [filteredMarkersData, setfilteredMarkersData] = useState([]);
-  //   const [filteredRingsData, setfilteredRingsData] = useState([]);
+  
   const [resize, setResize] = useState(false);
 
   // fetch years to make years dropdown for filtering
@@ -35,14 +32,7 @@ function LandingPage() {
     };
   }, []);
 
-  //   //filtering
-  //   useEffect(() => {
-  //     const filteredRing = ringsData.filter((el) => el.year === selectedYear);
-  //     setfilteredRingsData(filteredRing);
-
-  //     const markerData = markersData.filter((el) => el.year === selectedYear);
-  //     setfilteredMarkersData(markerData);
-  //   }, [selectedYear, markersData, ringsData]);
+ 
 
   return (
     <div className="App" style={{ width: `${resize ? "100vw" : "90vw"}` }}>
@@ -50,7 +40,7 @@ function LandingPage() {
         <></>
       ) : (
         <div>
-          <h1>here goes title</h1>
+          <h1>3D MoonQuake Map</h1>
           <div className="filter__wrapper">
             <ChartDropdown />
 
