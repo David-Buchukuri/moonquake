@@ -12,6 +12,7 @@ export default function YearDropdown({ years, setSelectedYear, selectedYear }) {
         <p
           className="year"
           onClick={() => {
+            setSelectedYear(null);
             setShowDropdown(false);
           }}
         >
