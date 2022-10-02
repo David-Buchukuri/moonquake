@@ -80,7 +80,7 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
       pointsMerge={true}
       labelAltitude={0.009}
       labelLabel={(d) => `
-            <div class='test'>
+            <div class='moon-label'>
                 <div><b>${d.label}</b></div>
                 <div>lat: ${d.lat}°</div>
                 <div>lng: ${d.lng}°</div>

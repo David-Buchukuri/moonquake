@@ -13,7 +13,7 @@ function LandingPage() {
   // fetch years to make years dropdown for filtering
   const fetchYears = async () => {
     const res = await axios.get(
-      "https://test-deployment-production.up.railway.app/api/by-year"
+      "https://test-deployment-production.up.railway.app/api/statistics/by-year"
     );
     setYears(res.data.map((el) => el.year));
   };
