@@ -30,7 +30,15 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
         comment: element.comment,
       };
     });
-    setMarkersData(pointsData);
+
+    if (selectedYear) {
+      const filtPointsData = pointsData.filter(
+        (el) => el.year === selectedYear
+      );
+      setMarkersData(filtPointsData);
+    } else {
+      setMarkersData(pointsData);
+    }
 
     const ringsData = pointsData.map((el) => {
       return {
@@ -43,22 +51,17 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
       };
     });
 
-    setRingsData(ringsData);
+    if (selectedYear) {
+      const filtRingsData = ringsData.filter((el) => el.year === selectedYear);
+      setRingsData(filtRingsData);
+    } else {
+      setRingsData(ringsData);
+    }
   };
 
   useEffect(() => {
     fetchMarkerAndRingsData();
-    if (selectedYear) {
-      const filteredRing = ringsData.filter((el) => el.year === selectedYear);
-      setfilteredRingsData(filteredRing);
-
-      const markerData = markersData.filter((el) => el.year === selectedYear);
-      setfilteredMarkersData(markerData);
-    } else {
-      setfilteredRingsData(ringsData);
-      setfilteredMarkersData(markersData);
-    }
-  }, [markersData, ringsData]);
+  }, [selectedYear]);
 
   return (
     <Globe
@@ -68,7 +71,7 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
       bumpImageUrl={bumpMap}
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
       showGraticules={true}
-      labelsData={filteredMarkersData}
+      labelsData={markersData}
       labelText="blank"
       labelSize={1.7}
       labelColor={() => "#D9730D"}
@@ -85,7 +88,7 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
                 <div>Happened<i> ${d.date}</i></div>
             <div>
             `}
-      ringsData={filteredRingsData}
+      ringsData={ringsData}
       ringColor={() => "#ff0000"}
       ringMaxRadius="maxR"
       ringPropagationSpeed={(d) => d.propagationSpeed}
