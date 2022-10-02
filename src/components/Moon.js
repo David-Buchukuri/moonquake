@@ -46,19 +46,23 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
     setRingsData(ringsData);
   };
 
-  useEffect(() => {
-    fetchMarkerAndRingsData();
-    if (selectedYear) {
-      const filteredRing = ringsData.filter((el) => el.year === selectedYear);
-      setfilteredRingsData(filteredRing);
+  useEffect(
+    () => {
+      fetchMarkerAndRingsData();
+      if (selectedYear) {
+        const filteredRing = ringsData.filter((el) => el.year === selectedYear);
+        setfilteredRingsData(filteredRing);
 
-      const markerData = markersData.filter((el) => el.year === selectedYear);
-      setfilteredMarkersData(markerData);
-    } else {
-      setfilteredRingsData(ringsData);
-      setfilteredMarkersData(markersData);
-    }
-  }, [markersData, ringsData]);
+        const markerData = markersData.filter((el) => el.year === selectedYear);
+        setfilteredMarkersData(markerData);
+      } else {
+        setfilteredRingsData(ringsData);
+        setfilteredMarkersData(markersData);
+      }
+    },
+    [selectedYear]
+    //   [markersData, ringsData]
+  );
 
   return (
     <Globe
