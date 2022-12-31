@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
   AreaChart,
@@ -11,26 +10,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import globeData from "../data/globeData";
+
 const Diagram = () => {
   const [data, setData] = useState(null);
 
-  const fetch = async () => {
-    const response = await axios.get(
-      "https://test-deployment-production.up.railway.app/api/statistics"
-    );
-    const chartsData = response?.data?.map((element) => {
+  useEffect(() => {
+    const chartsData = globeData?.map((element) => {
       return {
         magnitude: Number(element.magnitude),
         pv: Number(element.magnitude),
         year: element.timestamp?.substring(0, 10),
       };
     });
+
     setData(chartsData);
-  };
-  useEffect(() => {
-    fetch();
   }, []);
-  // console.log(data)
+
   return (
     <div className="App">
       <div className="chart__wrapper">

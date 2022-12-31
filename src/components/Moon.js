@@ -3,21 +3,14 @@ import surface from "../images/8k-lunar-surface.jpg";
 import bumpMap from "../images/lunar-bumpmap.jpg";
 import "../App.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import globeData from "../data/globeData";
 
 function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
-  //   console.log("moon ", ringsData);
   const [markersData, setMarkersData] = useState([]);
   const [ringsData, setRingsData] = useState([]);
-  const [filteredMarkersData, setfilteredMarkersData] = useState([]);
-  const [filteredRingsData, setfilteredRingsData] = useState([]);
 
-  // fetch and process rings and markers data for moon component
   const fetchMarkerAndRingsData = async () => {
-    const res = await axios.get(
-      "https://test-deployment-production.up.railway.app/api/statistics"
-    );
-    const pointsData = res?.data?.map((element) => {
+    const pointsData = globeData?.map((element) => {
       return {
         id: element.id,
         lat: element.lat,

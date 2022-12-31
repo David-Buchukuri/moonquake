@@ -10,7 +10,7 @@ export default function YearDropdown({ years, setSelectedYear, selectedYear }) {
     return (
       <div className="options-wrapper">
         <p
-          className="year"
+          className="dropdown-item"
           onClick={() => {
             setSelectedYear(null);
             setShowDropdown(false);
@@ -21,7 +21,7 @@ export default function YearDropdown({ years, setSelectedYear, selectedYear }) {
         {years.map((el, index) => {
           return (
             <p
-              className="year"
+              className="dropdown-item"
               key={index}
               onClick={() => {
                 setShowDropdown(false);

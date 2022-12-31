@@ -6,25 +6,19 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend, ResponsiveContainer
+  Legend,
+  ResponsiveContainer,
 } from "recharts";
-import axios from "axios";
+import chartData from "../data/chartData";
 
 export default function Chart() {
   const [data, setData] = useState([]);
-  const url =
-    "https://test-deployment-production.up.railway.app/api/statistics/by-year";
-  const fetchData = async () => {
-    const res = await axios.get(url);
-    const rawData = res.data;
-    const mappedData = rawData.map(({ year, amount }) => {
+
+  useEffect(() => {
+    const mappedData = chartData.map(({ year, amount }) => {
       return { name: year, amount };
     });
     setData(mappedData);
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
   return (
@@ -45,7 +39,11 @@ export default function Chart() {
                 }}
                 barSize={70}
               >
-                <XAxis dataKey="name" scale="point" padding={{ left: 35, right: 35 }} />
+                <XAxis
+                  dataKey="name"
+                  scale="point"
+                  padding={{ left: 35, right: 35 }}
+                />
                 <YAxis />
                 <Tooltip />
                 <Legend />
@@ -55,7 +53,6 @@ export default function Chart() {
             </ResponsiveContainer>
           </div>
         )}
-
       </div>
     </div>
   );

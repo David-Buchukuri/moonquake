@@ -19,8 +19,12 @@ export default function ChartDropdown() {
       </div>
       {showDropdown && (
         <div className="options-wrapper">
-          <Link to="/linechart">line chart</Link>
-          <Link to="/barchart">bar chart</Link>
+          <Link to="/linechart" className="dropdown-item">
+            line chart
+          </Link>
+          <Link to="/barchart" className="dropdown-item">
+            bar chart
+          </Link>
         </div>
       )}
     </div>

@@ -1,8 +1,8 @@
 import Moon from "./../components/Moon";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import ChartDropdown from "../components/ChartDropdown";
 import YearDropdown from "../components/YearDropdown";
+import chartData from "../data/chartData";
 
 function LandingPage() {
   const [years, setYears] = useState([]);
@@ -10,16 +10,8 @@ function LandingPage() {
 
   const [resize, setResize] = useState(false);
 
-  // fetch years to make years dropdown for filtering
-  const fetchYears = async () => {
-    const res = await axios.get(
-      "https://test-deployment-production.up.railway.app/api/statistics/by-year"
-    );
-    setYears(res.data.map((el) => el.year));
-  };
-
   useEffect(() => {
-    fetchYears();
+    setYears(chartData.map((el) => el.year));
     // canvas resize event listener and function
     const keyDownHandler = (event) => {
       if (event.key === "Escape") {
