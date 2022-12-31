@@ -8,6 +8,8 @@ import globeData from "../data/globeData";
 function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
   const [markersData, setMarkersData] = useState([]);
   const [ringsData, setRingsData] = useState([]);
+  const [globeWidth, setGlobeWidth] = useState(window.innerWidth);
+  const [globeHeight, setGlobeHeight] = useState(window.innerHeight);
 
   const fetchMarkerAndRingsData = async () => {
     const pointsData = globeData?.map((element) => {
@@ -25,10 +27,10 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
     });
 
     if (selectedYear) {
-      const filtPointsData = pointsData.filter(
+      const filteredPointsData = pointsData.filter(
         (el) => el.year === selectedYear
       );
-      setMarkersData(filtPointsData);
+      setMarkersData(filteredPointsData);
     } else {
       setMarkersData(pointsData);
     }
@@ -54,12 +56,23 @@ function Moon({ widthMultiplier, heightMultiplier, selectedYear }) {
 
   useEffect(() => {
     fetchMarkerAndRingsData();
+
+    const updateGlobeSize = () => {
+      setGlobeWidth(window.innerWidth);
+      setGlobeHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", updateGlobeSize);
+
+    return () => {
+      window.removeEventListener("resize", updateGlobeSize);
+    };
   }, [selectedYear]);
 
   return (
     <Globe
-      width={window.innerWidth * widthMultiplier}
-      height={window.innerHeight * heightMultiplier}
+      width={globeWidth * widthMultiplier}
+      height={globeHeight * heightMultiplier}
       globeImageUrl={surface}
       bumpImageUrl={bumpMap}
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"

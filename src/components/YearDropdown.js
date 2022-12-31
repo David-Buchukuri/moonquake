@@ -38,13 +38,10 @@ export default function YearDropdown({ years, setSelectedYear, selectedYear }) {
 
   return (
     <div ref={chartParent} className="dropdown">
-      <div className="select">
+      <div className="select" onClick={() => setShowDropdown(!showDropdown)}>
         {selectedYear ? <p>{selectedYear}</p> : <p>years</p>}
 
-        <i
-          className="arrow down"
-          onClick={() => setShowDropdown(!showDropdown)}
-        ></i>
+        <i className="arrow down"></i>
       </div>
 
       {showDropdown && yearsContainer()}

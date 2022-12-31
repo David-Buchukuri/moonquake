@@ -10,12 +10,9 @@ export default function ChartDropdown() {
 
   return (
     <div ref={chartParent} className="dropdown">
-      <div className="select">
-        <p>chart</p>
-        <i
-          className="arrow down"
-          onClick={() => setShowDropdown(!showDropdown)}
-        ></i>
+      <div className="select" onClick={() => setShowDropdown(!showDropdown)}>
+        <p>charts</p>
+        <i className="arrow down"></i>
       </div>
       {showDropdown && (
         <div className="options-wrapper">

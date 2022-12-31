@@ -42,6 +42,7 @@
   flex-grow: 0;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .options-wrapper{
@@ -58,12 +59,9 @@
 
  a{
   text-decoration: none;
-  color: black;
-   
-   transition: all;
+  color: black; 
+  transition: all;
   transition-duration: 0.4s;
-  
-  /* border-radius: 4px; */
 }
 
 .years{
@@ -112,20 +110,19 @@ a:hover{
   border: 1px #eeeeee solid;
   background-color: #eceff1;
 }
-.filter__wrapper {
+.filter-wrapper {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  
   margin-top: 50px;
 }
 
-.resize_button_wrapper{
+.resize-button-wrapper{
   display: flex;
   justify-content: flex-end;
 }
 
-.resize_button{
+.resize-button{
   border-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -135,7 +132,7 @@ a:hover{
   border: none;
 }
 
-.resize_button:hover{
+.resize-button:hover{
   cursor: pointer;
 }
 
@@ -217,6 +214,6 @@ video {
   color: inherit;
   font-weight: inherit;
 }
-.landing__heading {
+.landing-heading {
   padding-top: 30px;
 }

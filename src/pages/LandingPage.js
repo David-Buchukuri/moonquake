@@ -32,8 +32,8 @@ function LandingPage() {
         <></>
       ) : (
         <div>
-          <h1 className="landing__heading">3D MoonQuake Map</h1>
-          <div className="filter__wrapper">
+          <h1 className="landing-heading">3D MoonQuake Map</h1>
+          <div className="filter-wrapper">
             <ChartDropdown />
             <YearDropdown
               years={years}
@@ -42,10 +42,10 @@ function LandingPage() {
             />
           </div>
           <div
-            className="resize_button_wrapper"
+            className="resize-button-wrapper"
             onClick={() => setResize(!resize)}
           >
-            <button type="button" className="resize_button">
+            <button type="button" className="resize-button">
               resize
             </button>
           </div>
