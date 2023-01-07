@@ -51,12 +51,13 @@ function LandingPage() {
           </div>
         </div>
       )}
-
-      <Moon
-        widthMultiplier={resize ? 1 : 0.9}
-        heightMultiplier={resize ? 1 : 0.7}
-        selectedYear={selectedYear}
-      />
+      <div className={!resize ? "moon-wrapper" : ""}>
+        <Moon
+          widthMultiplier={resize ? 1 : 0.9}
+          heightMultiplier={resize ? 1 : 0.7}
+          selectedYear={selectedYear}
+        />
+      </div>
     </div>
   );
 }
