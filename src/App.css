@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
-
-*{
+* {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow-x: none;
-
 }
-
 
 .App {
   display: flex;
@@ -18,7 +15,7 @@
   width: 90vw;
 }
 
-.dropdown{
+.dropdown {
   background-color: #c5c2c2;
   padding-left: 10px;
   padding-right: 10px;
@@ -28,12 +25,22 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  position: relative;
-
+  /* position: absolute; */
+  /* margin-right: 300px; */
+  z-index: 10;
 }
 
+.filter-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 50px;
+}
 
-.select{
+.select {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -45,7 +52,7 @@
   cursor: pointer;
 }
 
-.options-wrapper{
+.options-wrapper {
   width: 100%;
   padding: 10px;
   display: flex;
@@ -57,18 +64,18 @@
   border-radius: 10px;
 }
 
- a{
+a {
   text-decoration: none;
-  color: black; 
+  color: black;
   transition: all;
   transition-duration: 0.4s;
 }
 
-.years{
- padding: 5px;
+.years {
+  padding: 5px;
 }
 
-a:hover{
+a:hover {
   background-color: black;
   color: white;
   /* padding-left: 10px; */
@@ -88,7 +95,6 @@ a:hover{
   -webkit-transform: rotate(45deg);
 }
 
-
 .moon-label {
   display: flex;
   padding: 10px;
@@ -96,7 +102,7 @@ a:hover{
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: rgba(0, 0, 0,  0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   font-size: 15px;
 }
@@ -110,19 +116,13 @@ a:hover{
   border: 1px #eeeeee solid;
   background-color: #eceff1;
 }
-.filter-wrapper {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin-top: 50px;
-}
 
-.resize-button-wrapper{
+.resize-button-wrapper {
   display: flex;
   justify-content: flex-end;
 }
 
-.resize-button{
+.resize-button {
   border-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -132,26 +132,25 @@ a:hover{
   border: none;
 }
 
-.resize-button:hover{
+.resize-button:hover {
   cursor: pointer;
 }
 
-span{
+span {
   margin: 0;
   padding: 0;
 }
 
-.dropdown-item{
+.dropdown-item {
   text-decoration: none;
   color: black;
   transition: all;
   transition-duration: 0.4s;
   border-radius: 4px;
   cursor: pointer;
-
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   background-color: black;
   color: white;
   padding-left: 10px;
@@ -188,14 +187,14 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.main{
+.main {
   overflow: hidden;
 }
 
-.start-exploring-btn{
+.start-exploring-btn {
   padding: 20px;
   font-size: 30px;
   border-radius: 15px;
@@ -204,16 +203,19 @@ video {
   background-color: white;
 }
 
-.about-h1{
+.about-h1 {
   font-size: 50px;
   letter-spacing: 3px;
 }
 
-.start-exploring-btn:hover{
+.start-exploring-btn:hover {
   background-color: black;
   color: inherit;
   font-weight: inherit;
 }
 .landing-heading {
   padding-top: 30px;
+}
+.moon-wrapper {
+  margin-top: 50px;
 }

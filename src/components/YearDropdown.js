@@ -18,20 +18,22 @@ export default function YearDropdown({ years, setSelectedYear, selectedYear }) {
         >
           All
         </p>
-        {years.map((el, index) => {
-          return (
-            <p
-              className="dropdown-item"
-              key={index}
-              onClick={() => {
-                setShowDropdown(false);
-                setSelectedYear(el);
-              }}
-            >
-              {el}
-            </p>
-          );
-        })}
+        <div>
+          {years.map((el, index) => {
+            return (
+              <p
+                className="dropdown-item"
+                key={index}
+                onClick={() => {
+                  setShowDropdown(false);
+                  setSelectedYear(el);
+                }}
+              >
+                {el}
+              </p>
+            );
+          })}
+        </div>
       </div>
     );
   };
